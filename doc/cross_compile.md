@@ -5,8 +5,10 @@
 <br \>
 ## 1. install the arm64 rootfs
 
-```cd sysroot
-make```
+```
+cd sysroot
+make
+```
 
 ## 2. install the aarch64 cross toolchains
 
@@ -22,22 +24,28 @@ Download protobuf from [github.com/google/Protobuf](https://github.com/google/pr
 
 NOTE：The vesion must be same as host.
 
-```sudo apt-get install autoconf automake libtool 
+```
+sudo apt-get install autoconf automake libtool 
 cd protobuf
 ./autogen.sh
 ./configure --with-protoc=protoc --host=aarch64-linux-gnu --prefix=/opt/protobuf_3.3.0
 make 
-sudo make install ```
+sudo make install 
+```
 
 >copy the libraries and headers into arm64 rootfs
 
-``` cp /opt/protobuf_3.3.0/lib/libprotobuf.so Tengine_DIR/sysroot/ubuntu_rootfs/usr/lib/
- cp -r /opt/protobuf_3.3.0/include/google Tengine_DIR/sysroot/ubuntu_rootfs/usr/include```
+``` 
+cp /opt/protobuf_3.3.0/lib/libprotobuf.so Tengine_DIR/sysroot/ubuntu_rootfs/usr/lib/
+ cp -r /opt/protobuf_3.3.0/include/google Tengine_DIR/sysroot/ubuntu_rootfs/usr/include
+ ```
+
 
 ## 5. un-comment the CROSS_COMPILE  in Makefile
 
-```CROSS_COMPILE=aarch64-linux-gnu- ```
-
+```
+CROSS_COMPILE=aarch64-linux-gnu- 
+```
 
 ## 6. build as normal
 
